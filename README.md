@@ -24,7 +24,7 @@ First time using <code>conda</code>? Make sure to run this at least once:
 
 Then create the workshop environment and install the dependencies:
 
-    conda env create -f https://raw.githubusercontent.com/BRG-teaching/UCL24/main/env.yml
+    conda env create -f https://raw.githubusercontent.com/BRG-teaching/UCL_2024/main/env.yml
 
 ### Verify installation
 
