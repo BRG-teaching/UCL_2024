@@ -1,0 +1,13 @@
+name: ucl24
+channels:
+  - conda-forge
+dependencies:
+  - git
+  - python ==3.12.4
+  - pip
+  - compas ==2.2.1
+  - pip:
+      - compas_dr
+      - compas_fd
+      - compas_tna
+      - compas_viewer
