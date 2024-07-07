@@ -24,9 +24,7 @@ First time using <code>conda</code>? Make sure to run this at least once:
 
 Then create the workshop environment and install the dependencies:
 
-    conda env create -f https://raw.githubusercontent.com/compas-Workshops/BFH24/main/env.yml TO BE UPDATED
-
-> **IMPORTANT**: If you're on Windows, use `env_win.yml`. On Mac or Linux, use `env.yml`.
+    conda env create -f https://raw.githubusercontent.com/BRG-teaching/UCL24/main/env.yml
 
 ### Verify installation
 
