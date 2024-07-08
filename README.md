@@ -40,9 +40,9 @@ Run the verification command `python -m compas`:
 
     Yay! COMPAS is installed correctly!
 
-    COMPAS: 2.2.1
+    COMPAS: 2.3.0
     Python: 3.12.4 (CPython)
-    Extensions: ['compas', 'compas-viewer', 'compas-tna', 'compas-dr', 'compas-fd']
+    Extensions: ['compas', 'compas-viewer', 'compas-tna', 'compas-dr', 'compas-fd', 'compas-occ']
 
 # Working in Rhino 8
 If you have a Rhino 8 License you can directly pip install COMPAS and all the packages needed for this workshop in Rhino 8 and run the scripts from the Rhino 8 ScriptEditor.
