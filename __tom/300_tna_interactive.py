@@ -1,9 +1,8 @@
-import rhinoscriptsyntax as rs
+import rhinoscriptsyntax as rs  # noqa: I001  # type: ignore
 
 import compas_rhino.objects
-from compas_fd.solvers import fd_numpy
-
 from compas.scene import Scene
+from compas_fd.solvers import fd_numpy
 
 # from compas_tna.diagrams import ForceDiagram
 from compas_tna.diagrams import FormDiagram
@@ -34,7 +33,8 @@ form.edges_attribute(name="q", value=10, keys=form.edges_on_boundary())
 scene = Scene()
 scene.clear()
 
-formobj = scene.add(form, show_forces=False, show_faces=False)
+formobj = scene.add(form, show_forces=False, show_faces=False)  # store the form diagram scene object
+
 scene.draw()
 
 # =============================================================================
@@ -58,7 +58,7 @@ edges = list(form.edges())
 # =============================================================================
 
 while True:
-    rs.UnselectAllObjects()
+    rs.UnselectAllObjects()  # without this, the previously selected edge is automatically selected again
 
     guid = compas_rhino.objects.select_curve("Select an edge of the diagram.")
     if not guid:
@@ -74,8 +74,9 @@ while True:
 
         if q is not None:
             form.edges_attribute(name="q", value=q, keys=loop)
-            vertices = form.vertices_attributes(names=["x", "y", "z"])
-            q = form.edges_attribute("q")
+
+            vertices = form.vertices_attributes(names=["x", "y", "z"])  # use the current coordinates
+            q = form.edges_attribute("q")  # use the current force densities
 
             result = fd_numpy(
                 vertices=vertices,
@@ -86,13 +87,20 @@ while True:
             )
 
             for vertex, attr in form.vertices(data=True):
+                # setting `data=True` returns a view of the vertex attribute data (`attr`)
+                # together with the vertex identifier (`vertex`)
+                # this data view is live and can be modified in place
                 attr["x"] = result.vertices[vertex, 0]
                 attr["y"] = result.vertices[vertex, 1]
                 attr["z"] = result.vertices[vertex, 2]
 
             vertical_from_zmax(form, zmax=3)
+
+            # this resets some of the cached values of the scene object
+            # such that the visualisation is correct...
             formobj.diagram = form
 
+            # redraw the scene
             scene.draw()
 
 # =============================================================================
