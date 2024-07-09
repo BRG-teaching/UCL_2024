@@ -12,13 +12,15 @@ from compas_viewer import Viewer
 # =============================================================================
 mesh = Mesh.from_meshgrid(dx=10, nx=10)
 
+
 # =============================================================================
-# Define supports
+# Boundary conditions
 # =============================================================================
 vertices = mesh.vertices_attributes("xyz")
 fixed = list(mesh.vertices_where(vertex_degree=2))
 edges = list(mesh.edges())
 loads = [[0, 0, 0] for _ in range(len(vertices))]
+
 
 # =============================================================================
 # Define q
@@ -30,8 +32,9 @@ for edge in edges:
     else:
         q.append(1.0)
 
+
 # =============================================================================
-# force density
+# Solve and update
 # =============================================================================
 result = fd_numpy(
     vertices=vertices,
@@ -41,18 +44,15 @@ result = fd_numpy(
     loads=loads,
 )
 
-# =============================================================================
-# Update mesh
-# =============================================================================
 for vertex, attr in mesh.vertices(data=True):
     attr["x"] = result.vertices[vertex, 0]
     attr["y"] = result.vertices[vertex, 1]
     attr["z"] = result.vertices[vertex, 2]
 
+
 # =============================================================================
 # Visualisation
 # =============================================================================
-
 viewer = Viewer()
 
 viewer.renderer.camera.target = [5, 5, 0]
