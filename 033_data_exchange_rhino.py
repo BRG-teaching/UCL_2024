@@ -1,4 +1,5 @@
 import compas
+import pathlib
 from compas.colors import Color
 from compas.geometry import Box
 from compas.scene import Scene
