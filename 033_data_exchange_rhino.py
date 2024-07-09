@@ -3,7 +3,7 @@ from compas.colors import Color
 from compas.geometry import Box
 from compas.scene import Scene
 
-filepath = "/Users/adellend/c2/UCL_workshop/data/session.json"
+filepath = pathlib.Path(__file__).parent / "data" / "session.json"
 session = compas.json_load(filepath)
 
 box = session["box"]
