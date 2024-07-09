@@ -1,5 +1,5 @@
 # UCL 2024
-Form-finding of compression only shell structures
+Form-finding of compression only shell structures.
 
 # Introduction to COMPAS
 
@@ -42,7 +42,7 @@ Run the verification command `python -m compas`:
 
     COMPAS: 2.3.0
     Python: 3.12.4 (CPython)
-    Extensions: ['compas', 'compas-viewer', 'compas-tna', 'compas-dr', 'compas-fd', 'compas-occ']
+    Extensions: ['compas-dr', 'compas-fd', 'compas-occ', 'compas-tna', 'compas', 'compas-viewer']
 
 # Working in Rhino 8
 If you have a Rhino 8 License you can directly pip install COMPAS and all the packages needed for this workshop in Rhino 8 and run the scripts from the Rhino 8 ScriptEditor.
@@ -88,6 +88,7 @@ For example, on Windows:
 ```bash
 $ ~/.rhinocode/py39-rh8/python.exe -m pip install compas
 ```
+You must repeat this step for each package to be installed (compas, compas_fd, compas_dr, compas_tna, compas_occ), not for compas_viewer. 
 
 ### Install from Source
 
